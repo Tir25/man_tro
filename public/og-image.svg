@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#030304" />
+      <stop offset="1" stop-color="#11111A" />
+    </linearGradient>
+    <linearGradient id="glow" x1="200" y1="100" x2="1000" y2="530" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7B2CBF" stop-opacity="0.85" />
+      <stop offset="0.5" stop-color="#4CC9F0" stop-opacity="0.65" />
+      <stop offset="1" stop-color="#2EC4B6" stop-opacity="0.35" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="300" cy="200" r="260" fill="url(#glow)" opacity="0.4" />
+  <circle cx="900" cy="430" r="220" fill="url(#glow)" opacity="0.35" />
+  <text x="600" y="320" text-anchor="middle" font-family="'Inter', 'Segoe UI', sans-serif" font-size="96" fill="#F4F4FB" letter-spacing="0.2em">MANTRO</text>
+  <text x="600" y="410" text-anchor="middle" font-family="'Inter', 'Segoe UI', sans-serif" font-size="32" fill="#9AD9FF" letter-spacing="0.35em">ETHEREAL INDUSTRIALISM</text>
+</svg>

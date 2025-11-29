@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --void: #030304;
+  --cyber-violet: #7B2CBF;
+  --cyan: #4CC9F0;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: manual;
+}
+
+html[data-native-scroll='true'] {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--void);
+  color: #ffffff;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.flow-gradient {
+  position: absolute;
+  inset: -15%;
+  background: radial-gradient(circle at 20% 20%, rgba(244, 189, 255, 0.9), transparent 55%),
+    radial-gradient(circle at 80% 20%, rgba(75, 201, 240, 0.8), transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(123, 44, 191, 0.85), transparent 65%);
+  filter: blur(20px);
+  /* Reduced from 35px for better performance */
+  opacity: 0.65;
+  will-change: transform;
+  animation: oilFlow 16s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-gradient {
+    animation: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .flow-gradient {
+    animation: none;
+    filter: blur(12px);
+    opacity: 0.5;
+  }
+}
+
+/* Glassmorphism performance tuning */
+.glass-optimized {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+@media (max-width: 768px) {
+  .glass-optimized {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-color: rgba(3, 3, 4, 0.9) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  [class*='backdrop-blur'] {
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+    background-color: rgba(3, 3, 4, 0.9) !important;
+  }
+
+  [class*='shadow-[0_0_80px'] {
+    box-shadow: none !important;
+  }
+}
+
+@keyframes oilFlow {
+  0% {
+    transform: translate3d(-10%, -5%, 0) scale(1);
+  }
+
+  25% {
+    transform: translate3d(10%, -10%, 0) scale(1.2);
+  }
+
+  50% {
+    transform: translate3d(5%, 10%, 0) scale(0.9);
+  }
+
+  75% {
+    transform: translate3d(-5%, 5%, 0) scale(1.1);
+  }
+
+  100% {
+    transform: translate3d(12%, -8%, 0) scale(1);
+  }
+}
+
+@keyframes textFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
