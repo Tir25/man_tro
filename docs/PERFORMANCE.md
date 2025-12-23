@@ -73,11 +73,37 @@ All images use Next.js Image component:
 
 ### 3. 3D Graphics Optimization
 
-#### Particle Count Reduction
-- Reduced from 15,000 to 6,000 particles
-- Adaptive particle counts for mobile devices
+#### Particle System (ParticleBrain)
 
-**Impact**: ~60% improvement in GPU performance
+Adaptive particle counts based on device capabilities:
+
+| Device Tier | Particles | Frame Rate | Features |
+|-------------|-----------|------------|----------|
+| Desktop | 8,000 | 60fps | Full effects |
+| Mobile | 4,000 | 45fps | Simplified shaders |
+| Low-End | 2,400 | 30fps | Minimal effects |
+| Reduced Motion | 0 | — | Static gradient fallback |
+
+```typescript
+const CONFIG = {
+  particleCount: isHydrated 
+    ? getRecommendedParticleCount(8000)
+    : 4000, // Conservative SSR default
+}
+```
+
+**Impact**: ~60% improvement in GPU performance on mobile
+
+#### SSR Hydration Fix
+
+Proper mobile detection using useState + useEffect pattern:
+
+```typescript
+const [isMobile, setIsMobile] = useState(false)
+useEffect(() => { setIsMobile(isMobileDevice()) }, [])
+```
+
+**Impact**: Prevents desktop-mode rendering on mobile devices
 
 #### Intersection Observer
 Animations pause when components are off-screen:
@@ -230,9 +256,12 @@ Monitor bundle sizes and identify optimization opportunities
 
 ### Adaptive Performance
 
-- Reduced particle counts on mobile
-- Disabled antialiasing on mobile
-- Simplified animations on low-end devices
+- Tiered particle counts (8000/4000/2400) based on device
+- Adaptive frame rate capping (60/45/30 fps)
+- CSS-based animations on mobile (TechStackEngine marquee)
+- Disabled antialiasing on mobile WebGL
+- Simplified shader effects on low-end devices
+- `prefers-reduced-motion` support with static fallbacks
 
 **Impact**: ~60-70% improvement on mobile devices
 
