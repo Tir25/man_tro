@@ -170,3 +170,41 @@ html.lenis {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
+/* Mobile marquee animations - CSS-based for better performance */
+@keyframes marquee-mobile {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-mobile-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-mobile {
+  animation: marquee-mobile 20s linear infinite;
+}
+
+.animate-marquee-mobile-reverse {
+  animation: marquee-mobile-reverse 25s linear infinite;
+}
+
+/* Pause animations when reduced motion preferred */
+@media (prefers-reduced-motion: reduce) {
+
+  .animate-marquee-mobile,
+  .animate-marquee-mobile-reverse {
+    animation: none;
+  }
+}
