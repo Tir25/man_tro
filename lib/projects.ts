@@ -9,6 +9,9 @@ export interface Project {
     src: string
     alt: string
   }
+  video?: string // Optional video cover
+  url?: string // Optional live demo URL
+  repo?: string // Optional repository URL
   dominantColor: string
   technologies: string[]
   stats: {
@@ -29,6 +32,7 @@ export const projects: Project[] = [
       src: '/work-vr-nextgen.png',
       alt: 'VR NextGEN Solutions website mock',
     },
+    url: 'https://vrnextgensolutions.com/',
     dominantColor: '#9b5de5',
     technologies: ['Next.js', 'GSAP', 'Framer Motion'],
     stats: [
@@ -38,21 +42,25 @@ export const projects: Project[] = [
     size: 'large',
   },
   {
-    id: 'ganpat-bus-tracker',
-    title: 'Ganpat University Bus Tracker',
-    description: 'Realtime fleet tracking web app with telemetry overlays for 40+ daily routes.',
+    id: 'unitrack',
+    title: 'UniTrack',
+    description: 'Real-time transit tracking PWA with live map, admin dashboard for routes & schedules, and modular React-style components.',
     category: 'Web Application',
     image: {
       src: '/work-bus-tracker.png',
-      alt: 'Ganpat University bus tracker dashboard',
+      alt: 'UniTrack live bus tracking dashboard',
     },
+    video: '/unitrack-demo.mp4',
+    url: 'https://university-bus-tracker-app.web.app/',
+    repo: 'https://github.com/Tir25/BTS',
     dominantColor: '#00bbf9',
-    technologies: ['React', 'Supabase', 'Mapbox'],
+    technologies: ['JavaScript', 'Vite', 'React', 'Firestore', 'Mapbox'],
     stats: [
       { label: 'Live Vehicles', value: '48' },
       { label: 'Latency', value: '2s' },
     ],
     size: 'medium',
+    featured: true,
   },
   {
     id: 'rudri-dave',

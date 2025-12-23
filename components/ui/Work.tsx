@@ -20,10 +20,10 @@ const projects: WorkProject[] = [
     },
     {
         id: 2,
-        title: 'Ganpat University Bus Tracker',
-        category: 'University Bus Tracking Web App',
+        title: 'UniTrack',
+        category: 'Real-time Transit Tracking PWA',
         image: '/work-bus-tracker.png',
-        url: 'https://bts-frontend-navy.vercel.app/',
+        url: 'https://university-bus-tracker-app.web.app/',
     },
     {
         id: 3,
