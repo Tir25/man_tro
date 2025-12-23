@@ -31,6 +31,37 @@ body {
   position: relative;
 }
 
+/* Scroll performance optimizations */
+main,
+section {
+  contain: content;
+}
+
+/* GPU acceleration for animated elements */
+[class*='will-change'] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimize touch scrolling */
+@supports (touch-action: manipulation) {
+  body {
+    touch-action: manipulation;
+  }
+}
+
+/* Reduce motion globally when preferred */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 .flow-gradient {
   position: absolute;
   inset: -15%;

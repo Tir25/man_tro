@@ -1,12 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import dynamic from 'next/dynamic'
+import { memo, useMemo } from 'react'
 import { SectionWrapper } from './SectionWrapper'
 import { Typography } from './Typography'
 import { cn } from '@/lib/utils'
 import { isMobileDevice } from '@/lib/deviceDetection'
-import { useMemo } from 'react'
 
 const manifestoParagraphs = [
   'At Mantro, we believe technology should make life easier.',
@@ -20,17 +19,25 @@ interface ManifestoProps {
   className?: string
 }
 
-const ManifestoBackground = dynamic(
-  () => import('@/components/effects/HeroScene').then((mod) => mod.HeroScene),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(123,44,191,0.2),_transparent_60%)]" />
-    ),
-  }
-)
+// Lightweight stagger animation - animates whole paragraphs instead of per-word
+const paragraphVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delay: i * 0.12,
+      ease: [0.25, 0.46, 0.45, 0.94], // Smooth ease-out
+    },
+  }),
+}
 
-export function Manifesto({ className }: ManifestoProps) {
+/**
+ * Manifesto - Company values section with optimized animations
+ * Uses paragraph-level animations instead of per-word for better scroll performance
+ */
+export const Manifesto = memo(function Manifesto({ className }: ManifestoProps) {
   const isMobile = useMemo(() => isMobileDevice(), [])
 
   return (
@@ -42,49 +49,46 @@ export function Manifesto({ className }: ManifestoProps) {
         className
       )}
     >
+      {/* Static gradient background - no 3D for better performance */}
       <div className="absolute inset-0 -z-10">
-        <ManifestoBackground className="h-full w-full opacity-80 mix-blend-screen" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#030304]/40 via-[#030304]/80 to-[#030304]/95 backdrop-blur-[2px]" />
+        <div
+          className="absolute inset-0 opacity-60"
+          style={{
+            background: 'radial-gradient(ellipse 80% 50% at 50% 50%, rgba(123,44,191,0.25), transparent 70%)',
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#030304]/40 via-[#030304]/80 to-[#030304]/95" />
       </div>
-      <div className="absolute inset-x-0 -top-24 mx-auto h-48 w-48 rounded-full bg-cyber-violet/30 blur-[140px]" aria-hidden />
+
+      {/* Subtle glow */}
+      <div
+        className="absolute inset-x-0 -top-24 mx-auto h-48 w-48 rounded-full bg-cyber-violet/20 blur-[100px]"
+        aria-hidden
+      />
+
       <div className="container mx-auto max-w-5xl text-center relative z-10">
         <Typography variant="h2" className="mb-10 text-balance">
           Manifesto
         </Typography>
+
         <div className="mx-auto max-w-3xl rounded-[2rem] border border-white/5 bg-black/60 p-10 shadow-[0_0_60px_rgba(76,201,240,0.08)]">
-          <div className="space-y-8 text-lg text-white/85 md:text-xl">
-            {manifestoParagraphs.map((paragraph, paragraphIndex) => (
+          <div className="space-y-6 text-lg text-white/85 md:text-xl">
+            {manifestoParagraphs.map((paragraph, index) => (
               isMobile ? (
-                <p key={paragraph} className="leading-relaxed text-balance">
+                <p key={index} className="leading-relaxed text-balance">
                   {paragraph}
                 </p>
               ) : (
                 <motion.p
-                  key={paragraph}
-                  className="leading-relaxed text-balance will-change-transform"
+                  key={index}
+                  custom={index}
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: true, amount: 0.6 }}
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: paragraphIndex * 0.1 } },
-                  }}
+                  viewport={{ once: true, amount: 0.5, margin: '-50px' }}
+                  variants={paragraphVariants}
+                  className="leading-relaxed text-balance"
                 >
-                  {paragraph.split(' ').map((word, wordIndex) => (
-                    <motion.span
-                      key={`${word}-${wordIndex}`}
-                      className="inline-block will-change-transform"
-                      initial={{ opacity: 0, filter: 'blur(12px)', y: 12 }}
-                      whileInView={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
-                      transition={{
-                        duration: 0.6,
-                        delay: paragraphIndex * 0.15 + wordIndex * 0.03,
-                      }}
-                      viewport={{ once: true, amount: 0.8 }}
-                    >
-                      {word}&nbsp;
-                    </motion.span>
-                  ))}
+                  {paragraph}
                 </motion.p>
               )
             ))}
@@ -93,4 +97,4 @@ export function Manifesto({ className }: ManifestoProps) {
       </div>
     </SectionWrapper>
   )
-}
+})
