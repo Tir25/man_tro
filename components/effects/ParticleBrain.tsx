@@ -273,14 +273,16 @@ export const ParticleBrain = forwardRef<ParticleBrainHandle, ParticleBrainProps>
       const particleSizes = new Float32Array(CONFIG.particleCount)
       const particleOpacities = new Float32Array(CONFIG.particleCount)
       const particleEffectStrengths = new Float32Array(CONFIG.particleCount)
+      const particleRandoms = new Float32Array(CONFIG.particleCount)
 
       for (let i = 0; i < CONFIG.particleCount; i++) {
         particleSizes[i] = THREE.MathUtils.randFloat(
           CONFIG.particleSizeRange[0],
           CONFIG.particleSizeRange[1]
         )
-        particleOpacities[i] = 1.0
+        particleOpacities[i] = THREE.MathUtils.randFloat(0.7, 1.0)  // Varied opacity
         particleEffectStrengths[i] = 0.0
+        particleRandoms[i] = Math.random()  // Per-particle randomness
       }
 
       particleEffectStrengthsRef.current = particleEffectStrengths
@@ -288,17 +290,19 @@ export const ParticleBrain = forwardRef<ParticleBrainHandle, ParticleBrainProps>
       geometry.setAttribute('size', new THREE.BufferAttribute(particleSizes, 1))
       geometry.setAttribute('opacity', new THREE.BufferAttribute(particleOpacities, 1))
       geometry.setAttribute('aEffectStrength', new THREE.BufferAttribute(particleEffectStrengths, 1))
+      geometry.setAttribute('aRandom', new THREE.BufferAttribute(particleRandoms, 1))
 
       // Colors
       const colors = new Float32Array(CONFIG.particleCount * 3)
       updateColorArray(colors, currentPositions, CONFIG.particleCount, CONFIG.shapeSize, tempVec)
       geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3))
 
-      // Material with shaders
+      // Material with enhanced shaders
       const material = new THREE.ShaderMaterial({
         uniforms: {
           pointTexture: { value: createStarTexture() },
           uGlobalBrightness: { value: brightnessMultiplier },
+          uTime: { value: 0.0 },
         },
         vertexShader: createVertexShader(),
         fragmentShader: createFragmentShader(),
