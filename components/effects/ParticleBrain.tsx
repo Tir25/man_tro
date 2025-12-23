@@ -237,7 +237,7 @@ export const ParticleBrain = forwardRef<ParticleBrainHandle, ParticleBrainProps>
     const container = containerRef.current
     if (!container) return
 
-    const dprCap = isMobile ? 1.25 : 1.5
+    const dprCap = isMobile ? 1 : 1.5
     frameIntervalRef.current = isMobile ? 1000 / 45 : 1000 / 60
     lastFrameTimeRef.current =
       typeof performance !== 'undefined' ? performance.now() : Date.now()
@@ -290,7 +290,8 @@ export const ParticleBrain = forwardRef<ParticleBrainHandle, ParticleBrainProps>
 
     // --- Particle system setup (logic adapted) ---
 
-    function createStarTexture(size: number) {
+    function createStarTexture() {
+      const size = 64
       const canvas = document.createElement('canvas')
       canvas.width = size
       canvas.height = size
@@ -384,7 +385,7 @@ export const ParticleBrain = forwardRef<ParticleBrainHandle, ParticleBrainProps>
       updateColorArray(colors, currentPositions, particleCount)
       geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3))
 
-      const pointTexture = createStarTexture(isMobile ? 96 : 72)
+      const pointTexture = createStarTexture()
 
       const material = new THREE.ShaderMaterial({
         uniforms: {
@@ -423,7 +424,6 @@ export const ParticleBrain = forwardRef<ParticleBrainHandle, ParticleBrainProps>
 
           void main() {
                float alpha = texture2D(pointTexture, gl_PointCoord).a;
-               alpha = pow(alpha, 1.3);
                if (alpha < 0.05) discard;
 
                vec3 finalColor = vColor * uGlobalBrightness * (1.0 + vEffectStrength * ${CONFIG.morphBrightnessFactor.toFixed(
