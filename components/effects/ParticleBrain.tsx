@@ -5,7 +5,7 @@ import {
   useEffect,
   useImperativeHandle,
   useRef,
-  useMemo,
+  useState,
 } from 'react'
 import * as THREE from 'three'
 import { animate, type JSAnimation, easings } from 'animejs'
@@ -14,6 +14,7 @@ import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import {
   getRecommendedParticleCount,
   isMobileDevice,
+  isLowEndDevice,
 } from '@/lib/deviceDetection'
 import {
   PARTICLE_CONFIG,
@@ -96,13 +97,34 @@ export const ParticleBrain = forwardRef<ParticleBrainHandle, ParticleBrainProps>
       enabled: true,
     })
 
-    // Adjust particle count based on device capabilities
-    const CONFIG = useMemo(() => {
-      const particleCount = getRecommendedParticleCount(PARTICLE_CONFIG.particleCount)
-      return { ...PARTICLE_CONFIG, particleCount }
+    // Device detection with proper hydration handling
+    const [isMobile, setIsMobile] = useState(false)
+    const [isLowEnd, setIsLowEnd] = useState(false)
+    const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+    const [isHydrated, setIsHydrated] = useState(false)
+
+    useEffect(() => {
+      setIsMobile(isMobileDevice())
+      setIsLowEnd(isLowEndDevice())
+      setIsHydrated(true)
+
+      // Check for reduced motion preference
+      const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+      setPrefersReducedMotion(mediaQuery.matches)
+
+      const handleChange = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches)
+      mediaQuery.addEventListener('change', handleChange)
+      return () => mediaQuery.removeEventListener('change', handleChange)
     }, [])
-    const isMobile = useMemo(() => isMobileDevice(), [])
-    const brightnessMultiplier = useMemo(() => (isMobile ? 1.25 : 1.55), [isMobile])
+
+    // Adjust particle count based on device capabilities (after hydration)
+    const CONFIG = {
+      ...PARTICLE_CONFIG,
+      particleCount: isHydrated
+        ? getRecommendedParticleCount(PARTICLE_CONFIG.particleCount)
+        : Math.floor(PARTICLE_CONFIG.particleCount * 0.5), // Conservative default
+    }
+    const brightnessMultiplier = isMobile ? 1.25 : 1.55
 
     // Three.js refs
     const sceneRef = useRef<THREE.Scene | null>(null)
@@ -173,10 +195,14 @@ export const ParticleBrain = forwardRef<ParticleBrainHandle, ParticleBrainProps>
     /* eslint-disable react-hooks/exhaustive-deps */
     useEffect(() => {
       const container = containerRef.current
-      if (!container) return
+      if (!container || !isHydrated) return
+
+      // Skip WebGL entirely for reduced motion preference - show static fallback
+      if (prefersReducedMotion) return
 
       const dprCap = isMobile ? 1 : 1.5
-      frameIntervalRef.current = isMobile ? 1000 / 45 : 1000 / 60
+      // Adaptive frame rate: 30fps for low-end, 45fps for mobile, 60fps for desktop
+      frameIntervalRef.current = isLowEnd ? 1000 / 30 : (isMobile ? 1000 / 45 : 1000 / 60)
       lastFrameTimeRef.current =
         typeof performance !== 'undefined' ? performance.now() : Date.now()
 
@@ -633,7 +659,7 @@ export const ParticleBrain = forwardRef<ParticleBrainHandle, ParticleBrainProps>
         rnd?.dispose()
         triggerMorphRef.current = null
       }
-    }, [CONFIG, isMobile])
+    }, [CONFIG.particleCount, isMobile, isLowEnd, isHydrated, prefersReducedMotion])
     /* eslint-enable react-hooks/exhaustive-deps */
 
     // Pause animation when not visible
@@ -647,6 +673,39 @@ export const ParticleBrain = forwardRef<ParticleBrainHandle, ParticleBrainProps>
       if (intersectionRef.current) {
         ; (intersectionRef.current as any).current = node
       }
+    }
+
+    // Show loading state before hydration
+    if (!isHydrated) {
+      return (
+        <div
+          className="fixed inset-0 z-0 flex items-center justify-center bg-[#030304]"
+          aria-hidden="true"
+        >
+          <div className="h-16 w-16 rounded-full border-2 border-cyan/20 border-t-cyan animate-spin" />
+        </div>
+      )
+    }
+
+    // Static fallback for reduced motion or very low-end devices
+    if (prefersReducedMotion) {
+      return (
+        <div
+          className="fixed inset-0 z-0 bg-[#030304]"
+          aria-hidden="true"
+        >
+          {/* Static gradient as fallback */}
+          <div
+            className="absolute inset-0 opacity-40"
+            style={{
+              background: `
+                radial-gradient(ellipse 50% 50% at 50% 50%, rgba(76,201,240,0.3), transparent 70%),
+                radial-gradient(ellipse 40% 40% at 60% 40%, rgba(123,44,191,0.3), transparent 60%)
+              `
+            }}
+          />
+        </div>
+      )
     }
 
     return (
