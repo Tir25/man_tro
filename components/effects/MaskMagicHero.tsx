@@ -6,36 +6,50 @@ import { isMobileDevice } from '@/lib/deviceDetection'
 
 /**
  * MaskMagicHero - Immersive hero section with scroll-synced scaling
- * Optimized for performance with reduced motion support and GPU acceleration
+ * Desktop: Scroll-synced scale animation
+ * Mobile: Entrance animation with subtle pulse effect
  */
 export const MaskMagicHero = memo(function MaskMagicHero() {
   const sectionRef = useRef<HTMLElement>(null)
   const prefersReducedMotion = useReducedMotion()
+  const isMobile = useMemo(() => isMobileDevice(), [])
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end start'],
   })
 
-  const isMobile = useMemo(() => isMobileDevice(), [])
-
-  // Simplified scale transform - less extreme scaling for better performance
+  // Desktop: Scroll-synced scale
   const scrollScale = useTransform(
     scrollYProgress,
-    [0, 0.8], // End earlier for snappier feel
-    [1, isMobile ? 1 : 4] // Less extreme scale on desktop
+    [0, 0.8],
+    [1, 4]
   )
 
-  // Optimized spring with lower stiffness for smoother animation
   const smoothScale = useSpring(scrollScale, {
-    stiffness: 80,  // Lower stiffness = smoother (was 120)
-    damping: 25,    // Slightly lower damping
-    mass: 0.4,      // Lower mass = quicker response (was 0.6)
+    stiffness: 80,
+    damping: 25,
+    mass: 0.4,
     restDelta: 0.001,
   })
 
-  // Skip animations for reduced motion preference
-  const finalScale = prefersReducedMotion || isMobile ? 1 : smoothScale
+  // Mobile entrance animation variants
+  const mobileVariants = {
+    hidden: {
+      opacity: 0,
+      scale: 0.8,
+      y: 20
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      }
+    }
+  }
 
   return (
     <section
@@ -43,12 +57,11 @@ export const MaskMagicHero = memo(function MaskMagicHero() {
       className="relative flex h-screen w-full items-center justify-center overflow-hidden bg-black"
       aria-label="MANTRO immersive hero"
       style={{
-        // GPU acceleration hints
         transform: 'translateZ(0)',
         backfaceVisibility: 'hidden',
       }}
     >
-      {/* Simplified gradient background - CSS only, no JS animation */}
+      {/* Gradient background */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div
           className="absolute inset-0 opacity-40"
@@ -62,27 +75,30 @@ export const MaskMagicHero = memo(function MaskMagicHero() {
         />
       </div>
 
-      <motion.h1
-        style={{
-          scale: finalScale,
-          // GPU acceleration
-          translateZ: 0,
-        }}
-        className={`
-          font-black uppercase leading-none tracking-[0.08em]
-          ${isMobile
-            ? 'text-[18vw] sm:text-[16vw] md:text-[14vw]'
-            : 'text-[20vw] md:text-[18vw] lg:text-[16vw]'
-          }
-          bg-gradient-to-br from-[#fdf2ff] via-[#7B2CBF] to-[#4CC9F0] 
-          text-transparent bg-clip-text
-          will-change-transform
-        `}
-      >
-        MANTRO
-      </motion.h1>
+      {isMobile || prefersReducedMotion ? (
+        // Mobile: Entrance animation only
+        <motion.h1
+          initial="hidden"
+          animate="visible"
+          variants={mobileVariants}
+          className="font-black uppercase leading-none tracking-[0.06em] text-[22vw] sm:text-[18vw] bg-gradient-to-br from-[#fdf2ff] via-[#7B2CBF] to-[#4CC9F0] text-transparent bg-clip-text"
+        >
+          MANTRO
+        </motion.h1>
+      ) : (
+        // Desktop: Scroll-synced scaling
+        <motion.h1
+          style={{
+            scale: smoothScale,
+            translateZ: 0,
+          }}
+          className="font-black uppercase leading-none tracking-[0.08em] text-[20vw] md:text-[18vw] lg:text-[16vw] bg-gradient-to-br from-[#fdf2ff] via-[#7B2CBF] to-[#4CC9F0] text-transparent bg-clip-text will-change-transform"
+        >
+          MANTRO
+        </motion.h1>
+      )}
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-10 flex justify-center text-xs uppercase tracking-[0.3em] text-white/60">
+      <div className="pointer-events-none absolute inset-x-0 bottom-8 sm:bottom-10 flex justify-center text-[10px] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.3em] text-white/50">
         Scroll
       </div>
     </section>

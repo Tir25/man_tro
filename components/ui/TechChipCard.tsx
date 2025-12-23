@@ -3,7 +3,13 @@
 import { memo, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
-import type { TechChip } from '@/lib/techStackData'
+
+interface TechChip {
+    name: string
+    icon: React.ReactNode
+    color: string
+    category: 'frontend' | 'mobile' | 'backend'
+}
 
 interface TechChipCardProps {
     tech: TechChip
