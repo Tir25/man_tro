@@ -1,11 +1,8 @@
 'use client'
 
-'use client'
-
-import React, { useEffect, useRef, useCallback } from 'react'
+import { useEffect, useRef, useCallback, Suspense } from 'react'
 import dynamic from 'next/dynamic'
 import { motion, useScroll } from 'framer-motion'
-import { Suspense } from 'react'
 import { Header } from '@/components/ui/Header'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import type { ParticleBrainHandle } from '@/components/effects/ParticleBrain'
@@ -83,7 +80,7 @@ export default function AboutPage() {
         // Higher score = more centered in viewport
         const distanceFromCenter = Math.abs(progress - 0.5)
         const score = 1 - distanceFromCenter
-        
+
         if (score > bestScore) {
           bestScore = score
           activeIndex = index
@@ -108,7 +105,7 @@ export default function AboutPage() {
   useEffect(() => {
     const updateShape = () => {
       const activeIndex = determineActiveShape()
-      
+
       // Only morph if the shape has changed
       if (lastActiveShapeRef.current !== activeIndex) {
         lastActiveShapeRef.current = activeIndex
