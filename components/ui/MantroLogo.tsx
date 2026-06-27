@@ -38,65 +38,53 @@ export function MantroLogo({
           <linearGradient
             id={gradientId}
             x1="0%"
-            y1="0%"
+            y1="100%"
             x2="100%"
-            y2="100%"
+            y2="0%"
           >
             <stop offset="0%" stopColor="#4CC9F0" />
-            <stop offset="100%" stopColor="#7B2CBF" />
+            <stop offset="50%" stopColor="#7B2CBF" />
+            <stop offset="100%" stopColor="#F72585" />
           </linearGradient>
+          <filter id={`glow-${gradientId}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
         </defs>
 
-        {/* Background container to keep the symbol visually heavy and balanced */}
+        {/* Outer geometric frame */}
         <rect
-          x="4"
-          y="4"
-          width="32"
-          height="32"
-          rx="10"
-          ry="10"
-          fill="rgba(15,23,42,0.9)"
+          x="2"
+          y="2"
+          width="36"
+          height="36"
+          rx="12"
+          stroke="rgba(255,255,255,0.1)"
+          strokeWidth="1"
+          fill="rgba(15,23,42,0.4)"
         />
 
-        {/* Left pillar */}
-        <rect
-          x="8"
-          y="10"
-          width="6"
-          height="20"
-          rx="3"
-          ry="3"
-          fill="#FFFFFF"
-        />
-
-        {/* Right pillar */}
-        <rect
-          x="26"
-          y="10"
-          width="6"
-          height="20"
-          rx="3"
-          ry="3"
-          fill="#FFFFFF"
-        />
-
-        {/* Central gradient bridge – geometric abstraction of the M apex */}
+        {/* Premium continuous line abstract 'M' */}
         <path
-          d="
-            M 11 12
-            L 18 12
-            L 20 9
-            L 22 12
-            L 29 12
-            L 29 18
-            L 23 18
-            L 20 15
-            L 17 18
-            L 11 18
-            Z
-          "
-          fill={`url(#${gradientId})`}
+          d="M 10 28 L 10 14 L 20 24 L 30 14 L 30 28"
+          stroke={`url(#${gradientId})`}
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+          filter={`url(#glow-${gradientId})`}
         />
+        
+        {/* Ethereal architectural accent lines */}
+        <path
+          d="M 10 14 L 20 8 L 30 14"
+          stroke="rgba(255,255,255,0.5)"
+          strokeWidth="1"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+        <circle cx="20" cy="8" r="1.5" fill="#4CC9F0" />
       </svg>
 
       {text && (

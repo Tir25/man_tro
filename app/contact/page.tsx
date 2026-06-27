@@ -50,29 +50,83 @@ export default function ContactPage() {
             >
               <div className="space-y-6">
                 <p className="text-xs font-medium uppercase tracking-[0.32em] text-white/45">
-                  Contact
+                  Contact Me
                 </p>
                 <h1 className="font-semibold tracking-tight text-4xl sm:text-5xl lg:text-6xl">
                   Let&apos;s Build the Future.
                 </h1>
                 <p className="max-w-md text-sm leading-relaxed text-white/60 sm:text-base">
-                  Tell us about your vision, product, or frontier you want to explore.
-                  Our core team reads every message. We typically reply within{' '}
-                  <span className="text-white/85">24 hours</span>.
+                  Tell me about your vision, product, or next big project.
+                  I read every message and typically reply within{' '}
+                  <span className="text-white/85">a few hours</span>.
                 </p>
               </div>
 
-              <div className="space-y-2">
-                <p className="text-xs uppercase tracking-[0.28em] text-white/45">
-                  Direct line
-                </p>
-                <a
-                  href={`mailto:${CONTACT_EMAIL}`}
-                  className="inline-flex items-center gap-2 text-sm font-medium text-white hover:text-cyan transition-colors"
-                >
-                  {CONTACT_EMAIL}
-                  <span className="h-[1px] w-4 bg-gradient-to-r from-cyan to-cyber-violet" />
-                </a>
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <p className="text-xs uppercase tracking-[0.28em] text-white/45">
+                    Email
+                  </p>
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    className="inline-flex items-center gap-2 text-sm font-medium text-white hover:text-cyan transition-colors"
+                  >
+                    {CONTACT_EMAIL}
+                    <span className="h-[1px] w-4 bg-gradient-to-r from-cyan to-cyber-violet" />
+                  </a>
+                </div>
+                
+                <div className="space-y-2">
+                  <p className="text-xs uppercase tracking-[0.28em] text-white/45">
+                    WhatsApp
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <a
+                      href="https://wa.me/8735092881"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-white hover:text-cyan transition-colors"
+                    >
+                      WhatsApp DM
+                      <span className="h-[1px] w-4 bg-gradient-to-r from-cyan to-cyber-violet" />
+                    </a>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <p className="text-xs uppercase tracking-[0.28em] text-white/45">
+                    Socials
+                  </p>
+                  <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+                    <a
+                      href="https://www.instagram.com/tirthraval27/"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-white hover:text-cyan transition-colors"
+                    >
+                      Instagram
+                      <span className="h-[1px] w-4 bg-gradient-to-r from-cyan to-cyber-violet" />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/tirth-raval-bbbba3210/"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-white hover:text-cyan transition-colors"
+                    >
+                      LinkedIn
+                      <span className="h-[1px] w-4 bg-gradient-to-r from-cyan to-cyber-violet" />
+                    </a>
+                    <a
+                      href="https://github.com/Tir25"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-white hover:text-cyan transition-colors"
+                    >
+                      GitHub
+                      <span className="h-[1px] w-4 bg-gradient-to-r from-cyan to-cyber-violet" />
+                    </a>
+                  </div>
+                </div>
               </div>
             </motion.div>
 

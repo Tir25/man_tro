@@ -62,22 +62,6 @@ export const projects: Project[] = [
     size: 'medium',
     featured: true,
   },
-  {
-    id: 'rudri-dave',
-    title: 'Rudri Dave — Portfolio',
-    description: 'Minimalist writer’s portfolio with encrypted blog drops and long-form typography.',
-    category: 'Portfolio Experience',
-    image: {
-      src: '/work-rudri-portfolio.png',
-      alt: 'Rudri Dave personal site preview',
-    },
-    dominantColor: '#ff9770',
-    technologies: ['Next.js', 'Tailwind CSS', 'MDX'],
-    stats: [
-      { label: 'Articles', value: '24+' },
-      { label: 'Bounce Rate', value: '-32%' },
-    ],
-    size: 'small',
-  },
+
 ]
 

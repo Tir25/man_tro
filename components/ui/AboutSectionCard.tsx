@@ -17,28 +17,28 @@ export const ABOUT_SECTIONS: AboutSection[] = [
         number: '01',
         label: 'THE GENESIS',
         title: 'The Genesis',
-        description: 'A collective intelligence with no edges.',
+        description: 'My journey started with a passion for bridging the gap between complex engineering and beautiful design.',
     },
     {
         id: 'expansion',
         number: '02',
         label: 'THE EXPANSION',
         title: 'The Expansion',
-        description: 'spiraling outwards into new possibilities.',
+        description: 'Evolving from building simple websites to engineering full-scale applications with modern tech stacks.',
     },
     {
         id: 'flux',
         number: '03',
         label: 'THE FLUX',
         title: 'The Flux',
-        description: 'Adapting to the frequency of the modern web.',
+        description: 'Embracing the ever-changing landscape of web and mobile development to deliver cutting-edge solutions.',
     },
     {
         id: 'foundation',
         number: '04',
         label: 'THE FOUNDATION',
         title: 'The Foundation',
-        description: 'Structured, pixel-perfect engineering.',
+        description: 'Delivering structured, scalable, and pixel-perfect applications that perform flawlessly on any device.',
     },
 ]
 

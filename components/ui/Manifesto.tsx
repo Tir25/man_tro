@@ -8,11 +8,11 @@ import { cn } from '@/lib/utils'
 import { isMobileDevice } from '@/lib/deviceDetection'
 
 const manifestoParagraphs = [
-  'At Mantro, we believe technology should make life easier.',
-  'We build websites, applications, and AI agents that are useful, reliable, and easy to use.',
-  "We don't chase trends--we listen, understand, and create with care.",
-  'Our goal is simple: technology that feels good and works well.',
-  'We are Mantro--small team, big dedication, always improving.',
+  'As a freelance developer, I believe technology should make life easier.',
+  'I build high-performance websites, scalable web applications, and intuitive interfaces.',
+  "I don't just write code—I listen, understand your business, and create with care.",
+  'My goal is simple: to deliver software that feels good and works flawlessly.',
+  "Hi, I'm Tirth Raval—dedicated, detail-oriented, and always improving.",
 ]
 
 interface ManifestoProps {

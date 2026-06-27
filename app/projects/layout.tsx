@@ -3,11 +3,11 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Projects',
   description:
-    'Explore our portfolio of spatial ventures shaping the next operating systems for reality. Parallax masonry of innovative digital experiences.',
+    'Explore my portfolio of digital ventures shaping the modern web. High-performance, beautifully designed web and mobile apps.',
   openGraph: {
-    title: 'Projects - Mantro Portfolio',
+    title: 'Projects - Tirth Raval Portfolio',
     description:
-      'Explore our portfolio of spatial ventures shaping the next operating systems for reality.',
+      'Explore my portfolio of digital ventures shaping the modern web.',
     type: 'website',
   },
 }

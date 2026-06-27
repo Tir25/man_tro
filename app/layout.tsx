@@ -13,8 +13,8 @@ const inter = Inter({
 })
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mantro.agency'
 const OG_IMAGE = '/og-image.svg'
-const SITE_TITLE = 'Mantro - Premium Digital Creation Agency'
-const SITE_DESCRIPTION = 'Ethereal Industrialism. Digital experiences reimagined.'
+const SITE_TITLE = 'Mantro - Freelance Studio of Tirth Raval'
+const SITE_DESCRIPTION = 'Freelance Full-Stack Web Developer, Frontend Engineer, Web Designer & App Developer.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -24,12 +24,14 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   keywords: [
+    'Tirth Raval',
     'Mantro',
-    'digital agency',
-    'product design',
-    'web experiences',
-    'three.js',
-    'framer motion',
+    'freelance developer',
+    'full-stack web developer',
+    'frontend engineer',
+    'web designer',
+    'app developer',
+    'freelance web design',
   ],
   icons: {
     icon: [

@@ -151,7 +151,7 @@ export function GlassContactForm() {
               {...register('message')}
               rows={4}
               className="peer w-full resize-none border-none bg-transparent px-0 py-1 text-sm text-white placeholder:text-white/30 outline-none focus:ring-0"
-              placeholder="Share goals, timelines, and any links you'd like us to review."
+              placeholder="Share goals, timelines, and any links you'd like me to review."
             />
             <span className="pointer-events-none absolute left-0 bottom-0 h-[2px] w-0 bg-[radial-gradient(circle_at_0%_0%,#4CC9F0,transparent_55%),radial-gradient(circle_at_100%_0%,#7B2CBF,transparent_55%)] transition-all duration-300 peer-focus:w-full" />
           </div>
@@ -165,7 +165,7 @@ export function GlassContactForm() {
           className="flex items-center justify-between pt-2"
         >
           <p className="text-[11px] text-white/40">
-            We reply within <span className="text-white/70">24 hours</span>.
+            I reply within <span className="text-white/70">a few hours</span>.
           </p>
 
           <motion.button

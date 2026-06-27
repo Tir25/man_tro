@@ -7,7 +7,6 @@ import { cn } from '@/lib/utils'
 export interface ServiceTier {
     name: string
     subtitle: string
-    price: string
     includes: string[]
     gradient: string
 }
@@ -16,42 +15,39 @@ export const SERVICE_TIERS: ServiceTier[] = [
     {
         name: 'The Ignition',
         subtitle: 'MVP / Prototype',
-        price: '₹4K - ₹8K',
         includes: [
             'Clean, responsive site or simple web app (up to 3 pages/screens)',
             'Basic design system with minimal transitions',
             'Essential functionality: contact forms, static content, light integrations',
             '1-2 revision rounds with deployment assistance',
             '1 month maintenance/support with simple SEO setup',
-            'Delivery window: 2-3 weeks, entry-level pricing',
+            'Delivery window: 2-3 weeks',
         ],
         gradient: 'from-cyan/20 via-cyan/10 to-transparent',
     },
     {
         name: 'The Orbit',
         subtitle: 'Full Brand / Product',
-        price: '₹12K - ₹25K',
         includes: [
             'Full website or app (up to 10 pages/screens)',
             'Interactive animations, scroll effects, micro-interactions',
             'API/database integrations plus optional AI/chatbot layer',
             '3-5 revision rounds with extended deployment support',
             '3-6 months maintenance, SEO & performance optimization',
-            'Delivery window: 4-6 weeks, best-value pricing',
+            'Delivery window: 4-6 weeks',
         ],
         gradient: 'from-cyber-violet/20 via-cyber-violet/10 to-transparent',
     },
     {
         name: 'The Galaxy',
         subtitle: 'Enterprise Ecosystem',
-        price: 'Custom / Retainer (₹)',
         includes: [
             'Fully bespoke design/dev across web, app, or AI agent surfaces',
             'Advanced motion graphics, interactions, and custom shaders',
             'Unlimited pages/screens with custom revision agreements',
             'Full deployment, monitoring, and SLA-backed 6-12 month support',
             'Deep AI integrations, analytics, security hardening, complex features',
-            'Delivery timeline set per scope, premium bespoke pricing',
+            'Delivery timeline set per scope',
         ],
         gradient: 'from-cyan/20 via-cyber-violet/20 to-cyan/10',
     },
@@ -103,42 +99,37 @@ export function TierCard({ tier, index }: TierCardProps) {
 
                 {/* Content */}
                 <div className="relative z-10 flex h-full flex-col">
-                    {/* Header */}
-                    <div className="mb-6">
-                        <Typography variant="h3" className="mb-2">
-                            {tier.name}
-                        </Typography>
-                        <Typography variant="body" className="text-gray-400 mb-4">
-                            {tier.subtitle}
-                        </Typography>
-                        <div className="inline-flex items-center gap-2 rounded-full bg-cyan/10 px-4 py-2 border border-cyan/20">
-                            <Typography variant="h4" color="cyan" className="text-2xl">
-                                {tier.price}
-                            </Typography>
-                        </div>
-                    </div>
+                  {/* Header */}
+                  <div className="mb-6">
+                    <Typography variant="h3" className="mb-2">
+                      {tier.name}
+                    </Typography>
+                    <Typography variant="body" className="text-gray-400">
+                      {tier.subtitle}
+                    </Typography>
+                  </div>
 
-                    {/* Includes List */}
-                    <div className="flex-1 space-y-3">
-                        <Typography variant="small" className="text-gray-500 uppercase tracking-wider mb-4">
-                            Includes
+                  {/* Includes List */}
+                  <div className="flex-1 space-y-3">
+                    <Typography variant="small" className="text-gray-500 uppercase tracking-wider mb-4">
+                      Includes
+                    </Typography>
+                    {tier.includes.map((item, idx) => (
+                      <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.15 + idx * 0.1 }}
+                        className="flex items-center gap-3"
+                      >
+                        <div className="h-1.5 w-1.5 rounded-full bg-cyan opacity-60 group-hover:opacity-100 transition-opacity" />
+                        <Typography variant="body" className="text-white/80 group-hover:text-white transition-colors">
+                          {item}
                         </Typography>
-                        {tier.includes.map((item, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, x: -10 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.15 + idx * 0.1 }}
-                                className="flex items-center gap-3"
-                            >
-                                <div className="h-1.5 w-1.5 rounded-full bg-cyan opacity-60 group-hover:opacity-100 transition-opacity" />
-                                <Typography variant="body" className="text-white/80 group-hover:text-white transition-colors">
-                                    {item}
-                                </Typography>
-                            </motion.div>
-                        ))}
-                    </div>
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
             </div>
         </motion.div>

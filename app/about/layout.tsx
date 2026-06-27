@@ -3,11 +3,11 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Learn about Mantro - A studio for immersive digital experiences where WebGL, motion, and engineering converge into something quietly luminous.',
+    'Learn about Tirth Raval — a freelance Full-Stack Web Developer, Frontend Engineer, and App Developer building immersive digital experiences.',
   openGraph: {
-    title: 'About Mantro - Premium Digital Creation Agency',
+    title: 'About - Tirth Raval',
     description:
-      'Learn about Mantro - A studio for immersive digital experiences where WebGL, motion, and engineering converge.',
+      'Learn about Tirth Raval — a freelance developer where modern web technologies, motion, and engineering converge.',
     type: 'website',
   },
 }

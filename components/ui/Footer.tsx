@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Typography } from './Typography'
 import { DecryptionLink } from './DecryptionLink'
 import { MantroLogo } from './MantroLogo'
-import { Twitter, Instagram, Linkedin, Github, Mail } from 'lucide-react'
+import { Instagram, Linkedin, Mail, MessageCircle, Github } from 'lucide-react'
 
 const sitemapLinks = [
     { label: 'Work', href: '/#work' },
@@ -14,16 +14,11 @@ const sitemapLinks = [
 ]
 
 const socialLinks = [
-    { label: 'X / Twitter', href: 'https://x.com/mantro', icon: Twitter, accentClassName: 'text-sky-400' },
-    { label: 'Instagram', href: 'https://instagram.com/mantro', icon: Instagram, accentClassName: 'text-pink-500' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/mantro', icon: Linkedin, accentClassName: 'text-sky-500' },
-    { label: 'GitHub', href: 'https://github.com/mantro', icon: Github, accentClassName: 'text-zinc-200' },
-    {
-        label: 'Gmail',
-        href: 'mailto:tirthraval27@gmail.com',
-        icon: Mail,
-        accentClassName: 'text-red-400',
-    },
+    { label: 'Instagram', href: 'https://www.instagram.com/tirthraval27/', icon: Instagram, accentClassName: 'text-pink-500' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/tirth-raval-bbbba3210/', icon: Linkedin, accentClassName: 'text-sky-500' },
+    { label: 'GitHub', href: 'https://github.com/Tir25', icon: Github, accentClassName: 'text-zinc-200' },
+    { label: 'Gmail', href: 'mailto:tirthraval27@gmail.com', icon: Mail, accentClassName: 'text-red-400' },
+    { label: 'WhatsApp', href: 'https://wa.me/8735092881', icon: MessageCircle, accentClassName: 'text-green-500' },
 ] as const
 
 function FooterComponent() {
@@ -39,7 +34,7 @@ function FooterComponent() {
                             </Typography>
                         </div>
                         <Typography variant="body" className="text-gray-400 max-w-sm">
-                            Ethereal Industrialism. We build digital experiences that transcend the ordinary and define the future.
+                            Freelance Full-Stack Web Developer. I build high-performance digital experiences that transcend the ordinary.
                         </Typography>
                     </div>
 
@@ -68,9 +63,9 @@ function FooterComponent() {
                         <Typography variant="h4" className="mb-6 text-sm uppercase tracking-widest text-gray-500">
                             Socials
                         </Typography>
-                        <p className="mb-4 text-xs font-mono text-gray-500/80">
-                            Hover to decrypt the uplinks.
-                        </p>
+                        <Typography variant="caption" className="mb-4 text-gray-400">
+                            Connect with me online
+                        </Typography>
                         <div className="space-y-3">
                             {socialLinks.map(({ label, href, icon, accentClassName }) => (
                                 <DecryptionLink
@@ -79,7 +74,7 @@ function FooterComponent() {
                                     href={href}
                                     icon={icon}
                                     accentClassName={accentClassName}
-                                    aria-label={`Visit our ${label} profile`}
+                                    aria-label={`Visit my ${label} profile`}
                                 />
                             ))}
                         </div>
@@ -88,7 +83,7 @@ function FooterComponent() {
 
                 <div className="pt-8 border-t border-white/5 flex flex-col items-center gap-2 text-center">
                     <Typography variant="body" className="text-sm text-gray-500">
-                        © {new Date().getFullYear()} Mantro Agency. All rights reserved.
+                        © {new Date().getFullYear()} Tirth Raval. All rights reserved.
                     </Typography>
                 </div>
             </div>

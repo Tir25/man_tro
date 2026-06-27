@@ -66,11 +66,11 @@ export function HomePageClient() {
             Let&apos;s build something impossible
           </Typography>
           <Typography variant="body" className="mb-10 text-gray-400">
-            Tell us about your product vision, upcoming campaign, or next frontier. We respond within two business days
-            with a tailored, technically-grounded path forward.
+            Tell me about your product vision, upcoming app, or next frontier. I usually respond within a few hours
+            to discuss your project and outline a path forward.
           </Typography>
           <Button size="lg" className="min-w-[220px]" asChild>
-            <Link href="/contact">Start a Project</Link>
+            <Link href="/contact">Hire Me</Link>
           </Button>
         </div>
       </SectionWrapper>

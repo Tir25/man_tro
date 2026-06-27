@@ -3,11 +3,11 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Get in touch with Mantro. Tell us about your product vision, upcoming campaign, or next frontier. We respond within 24 hours.',
+    'Get in touch with Tirth Raval. Tell me about your product vision, upcoming app, or next frontier. I respond within a few hours.',
   openGraph: {
-    title: 'Contact Mantro - Premium Digital Creation Agency',
+    title: 'Contact - Freelance Studio of Tirth Raval',
     description:
-      'Get in touch with Mantro. Tell us about your product vision, upcoming campaign, or next frontier.',
+      'Get in touch with Tirth Raval. Tell me about your product vision, upcoming app, or next frontier.',
     type: 'website',
   },
 }

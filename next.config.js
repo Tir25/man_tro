@@ -1,4 +1,4 @@
-﻿/** @type {import('next').NextConfig} */
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
   reactStrictMode: true,
@@ -20,6 +20,12 @@ const nextConfig = {
   compress: true,
   // Power optimizations
   poweredByHeader: false,
+  // Lock Turbopack root to this directory to prevent it from finding the rogue C:\Users\tirth\package-lock.json
+  experimental: {
+    turbopack: {
+      root: __dirname,
+    },
+  },
 }
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({

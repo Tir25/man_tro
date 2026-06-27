@@ -68,7 +68,7 @@ export function ServicesPageClient() {
             Not sure which trajectory fits? Let&apos;s discuss your vision and find the perfect path forward.
           </Typography>
           <Button size="lg" className="min-w-[220px]" asChild>
-            <Link href="/contact">Start a Project</Link>
+            <Link href="/contact">Hire Me</Link>
           </Button>
         </div>
       </SectionWrapper>

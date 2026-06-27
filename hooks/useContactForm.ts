@@ -42,7 +42,7 @@ export function useContactForm() {
             if (result.success) {
                 setSubmitted(true)
                 reset()
-                success('Message sent successfully! We\'ll get back to you within 24 hours.', 5000)
+                success("Message sent successfully! I'll get back to you within a few hours.", 5000)
                 // Reset submitted state after 3 seconds
                 setTimeout(() => setSubmitted(false), 3000)
             }

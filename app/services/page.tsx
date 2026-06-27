@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 import { ServicesPageClient } from './page-client'
 
 export const metadata: Metadata = {
-  title: 'Services',
+  title: 'Freelance Services',
   description:
-    'Choose Your Trajectory. From rapid MVPs to enterprise ecosystems, we craft digital experiences that transcend the ordinary.',
+    'Freelance web development, frontend engineering, app development, and design services by Tirth Raval.',
   openGraph: {
-    title: 'Services | Mantro',
+    title: 'Freelance Services | Mantro',
     description:
-      'Choose Your Trajectory. From rapid MVPs to enterprise ecosystems, we craft digital experiences that transcend the ordinary.',
+      'Freelance web development, frontend engineering, app development, and design services by Tirth Raval.',
     type: 'website',
   },
 }

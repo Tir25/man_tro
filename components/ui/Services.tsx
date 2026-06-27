@@ -11,31 +11,31 @@ import type { Service } from '@/src/types'
 const services: Service[] = [
     {
         title: 'Digital Strategy',
-        description: 'We craft roadmaps for digital dominance, aligning technology with your boldest business goals.',
+        description: 'I analyze your business goals and craft a clear technical roadmap to ensure your project succeeds from day one.',
         icon: '01',
         image: '/digital-strategy-service.png',
     },
     {
         title: 'UI/UX Design',
-        description: 'We craft roadmaps for digital dominance, aligning technology with your boldest business goals.',
+        description: 'I design intuitive, premium interfaces that look beautiful and provide a seamless experience for your users.',
         icon: '02',
         image: '/ui-ux-service.png',
     },
     {
         title: 'Web Development',
-        description: 'We craft roadmaps for digital dominance, aligning technology with your boldest business goals.',
+        description: 'I build blazing-fast, scalable web applications using modern tech stacks like Next.js, React, and Tailwind.',
         icon: '03',
         image: '/web-development-service.png',
     },
     {
         title: 'Android Development',
-        description: 'We craft roadmaps for digital dominance, aligning technology with your boldest business goals.',
+        description: 'I develop robust and responsive Android applications tailored to perform flawlessly on any device.',
         icon: '04',
         image: '/android-development-service.png',
     },
     {
         title: 'AI Agent Development',
-        description: 'We craft roadmaps for digital dominance, aligning technology with your boldest business goals.',
+        description: 'I integrate cutting-edge AI capabilities into your products to automate tasks and create smarter user experiences.',
         icon: '05',
         image: '/ai-agent-development-service.png',
     },
@@ -94,8 +94,7 @@ export const ServicesGrid = memo(function ServicesGrid({ className }: ServicesGr
                         Precision Meets Dreaming
                     </Typography>
                     <Typography variant="body" className="mx-auto max-w-3xl text-gray-400">
-                        Each engagement is treated like a bespoke artifact—equal parts research lab, art studio, and
-                        high-velocity product squad. These are the disciplines we thread into every build.
+                        Each project is treated as a bespoke collaboration. I combine deep engineering expertise with clean design to bring your vision to life.
                     </Typography>
                 </div>
 
