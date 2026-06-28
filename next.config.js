@@ -21,10 +21,8 @@ const nextConfig = {
   // Power optimizations
   poweredByHeader: false,
   // Lock Turbopack root to this directory to prevent it from finding the rogue C:\Users\tirth\package-lock.json
-  experimental: {
-    turbopack: {
-      root: __dirname,
-    },
+  turbopack: {
+    root: __dirname,
   },
 }
 

@@ -24,6 +24,26 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'whispering-vine',
+    title: 'The Whispering Vine',
+    description: 'Botanical cafe website featuring immersive visual layouts, fluid scroll animation layers, and custom menu navigation details.',
+    category: 'Cafe Website',
+    image: {
+      src: '/work-whispering-vine.png',
+      alt: 'The Whispering Vine botanical cafe landing page',
+    },
+    video: '/whispering-vine-demo.mp4',
+    url: 'https://lovely-phoenix-4646df.netlify.app/',
+    dominantColor: '#4d9078',
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'AOS'],
+    stats: [
+      { label: 'Visits', value: '1.2K+' },
+      { label: 'Score', value: '98%' },
+    ],
+    size: 'large',
+    featured: true,
+  },
+  {
     id: 'vr-nextgen',
     title: 'VR NextGEN Solutions',
     description: 'Consultancy firm website blending cinematic motion with crisp case-study flows.',

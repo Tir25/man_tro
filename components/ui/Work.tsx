@@ -13,28 +13,28 @@ import type { WorkProject } from '@/src/types'
 const projects: WorkProject[] = [
     {
         id: 1,
+        title: 'The Whispering Vine',
+        category: 'Botanical Cafe Website',
+        image: '/work-whispering-vine.png',
+        url: 'https://lovely-phoenix-4646df.netlify.app/',
+    },
+    {
+        id: 2,
         title: 'VR NextGEN Solutions',
         category: 'Consultancy Firm Website',
         image: '/work-vr-nextgen.png',
         url: 'https://vrnextgensolutions.com/',
     },
     {
-        id: 2,
+        id: 3,
         title: 'UniTrack',
         category: 'Real-time Transit Tracking PWA',
         image: '/work-bus-tracker.png',
         url: 'https://university-bus-tracker-app.web.app/',
     },
-    {
-        id: 3,
-        title: 'Rudri Dave – Portfolio & Blog',
-        category: 'Portfolio & Blogging Site',
-        image: '/work-rudri-portfolio.png',
-        url: 'https://rudri-p-portfolio.vercel.app/',
-    },
 ]
 
-const categories = ['All', 'Consultancy', 'Web App', 'Portfolio']
+const categories = ['All', 'Websites', 'Web Apps']
 
 export function Work() {
     const { activeCategory, setActiveCategory, filteredProjects } =

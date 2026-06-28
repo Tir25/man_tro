@@ -21,17 +21,24 @@ export function useProjectFilter(
       return projects
     }
 
+    const activeLower = activeCategory.toLowerCase();
+
     return projects.filter((project) => {
-      if (activeCategory === 'Consultancy') {
-        return project.category.includes('Consultancy')
+      const categoryLower = project.category.toLowerCase();
+      
+      if (activeLower === 'websites') {
+        return (
+          categoryLower.includes('website') || 
+          categoryLower.includes('firm') || 
+          categoryLower.includes('cafe') || 
+          categoryLower.includes('consultancy')
+        );
       }
-      if (activeCategory === 'Web App') {
-        return project.category.includes('Web App')
+      if (activeLower === 'web apps') {
+        return categoryLower.includes('app') || categoryLower.includes('pwa');
       }
-      if (activeCategory === 'Portfolio') {
-        return project.category.includes('Portfolio')
-      }
-      return true
+      
+      return categoryLower.includes(activeLower);
     })
   }, [activeCategory, projects])
 
