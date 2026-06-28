@@ -52,6 +52,7 @@ export const projects: Project[] = [
       src: '/work-vr-nextgen.png',
       alt: 'VR NextGEN Solutions website mock',
     },
+    video: '/vr-nextgen-thumb.mp4',
     url: 'https://vrnextgensolutions.com/',
     dominantColor: '#9b5de5',
     technologies: ['Next.js', 'GSAP', 'Framer Motion'],

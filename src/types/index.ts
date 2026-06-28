@@ -34,6 +34,7 @@ export interface WorkProject {
   title: string
   category: string
   image: string
+  video?: string
   url: string
 }
 

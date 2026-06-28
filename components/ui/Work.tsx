@@ -23,6 +23,7 @@ const projects: WorkProject[] = [
         title: 'VR NextGEN Solutions',
         category: 'Consultancy Firm Website',
         image: '/work-vr-nextgen.png',
+        video: '/vr-nextgen-thumb.mp4',
         url: 'https://vrnextgensolutions.com/',
     },
     {
@@ -88,18 +89,29 @@ export function Work() {
                                 layout
                                 className="group relative aspect-[4/3] overflow-hidden rounded-xl cursor-pointer"
                             >
-                                {/* Project image */}
-                                <div className="w-full h-full overflow-hidden">
-                                    <Image
-                                        src={project.image}
-                                        alt={project.title}
-                                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                        fill
-                                        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                                        placeholder="blur"
-                                        blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMwMzAzMDQiLz48L3N2Zz4="
-                                        loading="lazy"
-                                    />
+                                {/* Project image / video */}
+                                <div className="w-full h-full overflow-hidden relative">
+                                    {project.video ? (
+                                        <video
+                                            src={project.video}
+                                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                            autoPlay
+                                            loop
+                                            muted
+                                            playsInline
+                                        />
+                                    ) : (
+                                        <Image
+                                            src={project.image}
+                                            alt={project.title}
+                                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                            fill
+                                            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                                            placeholder="blur"
+                                            blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMwMzAzMDQiLz48L3N2Zz4="
+                                            loading="lazy"
+                                        />
+                                    )}
                                 </div>
 
                                 {/* Overlay */}

@@ -1,0 +1,87 @@
+/* ============================================
+   DESIGN TOKENS — Single source of truth
+   ============================================ */
+
+:root {
+    /* ---- Colors ---- */
+    --color-sage:        #6B8E7B;
+    --color-sage-light:  #A3BCA9;
+    --color-sage-dark:   #4A6B56;
+    --color-cream:       #F9F6F0;
+    --color-cream-dark:  #F0EBE0;
+    --color-terracotta:  #D4A373;
+    --color-blush:       #F4E1E1;
+    --color-slate:       #3E4C59;
+    --color-slate-light: #6B7B8D;
+    --color-white:       #FFFFFF;
+    --color-gold:        #C9A94E;
+
+    /* Semi-transparent variants */
+    --color-sage-10:     rgba(107, 142, 123, 0.1);
+    --color-sage-20:     rgba(107, 142, 123, 0.2);
+    --color-sage-30:     rgba(107, 142, 123, 0.3);
+    --color-sage-50:     rgba(107, 142, 123, 0.5);
+    --color-cream-70:    rgba(249, 246, 240, 0.7);
+    --color-cream-85:    rgba(249, 246, 240, 0.85);
+    --color-cream-90:    rgba(249, 246, 240, 0.9);
+    --color-white-10:    rgba(255, 255, 255, 0.1);
+    --color-white-20:    rgba(255, 255, 255, 0.2);
+    --color-white-30:    rgba(255, 255, 255, 0.3);
+    --color-white-50:    rgba(255, 255, 255, 0.5);
+    --color-white-80:    rgba(255, 255, 255, 0.8);
+    --color-white-90:    rgba(255, 255, 255, 0.9);
+    --color-black-30:    rgba(0, 0, 0, 0.3);
+    --color-black-50:    rgba(0, 0, 0, 0.5);
+
+    /* ---- Z-Index Layering System ---- */
+    --z-background:    1;
+    --z-content:      10;
+    --z-navbar:       40;
+    --z-birds:        45;
+    --z-landing:      50;
+    --z-burst-birds:  60;
+    --z-modal:        70;
+    --z-cursor:       80;
+
+    /* ---- Typography ---- */
+    --font-serif:  "Playfair Display", serif;
+    --font-sans:   "Lato", sans-serif;
+
+    /* ---- Spacing ---- */
+    --space-xs:    0.25rem;
+    --space-sm:    0.5rem;
+    --space-md:    1rem;
+    --space-lg:    1.5rem;
+    --space-xl:    2rem;
+    --space-2xl:   3rem;
+    --space-3xl:   4rem;
+
+    /* ---- Border Radius ---- */
+    --radius-sm:   0.5rem;
+    --radius-md:   0.75rem;
+    --radius-lg:   1rem;
+    --radius-xl:   1.5rem;
+    --radius-2xl:  2rem;
+    --radius-3xl:  3rem;
+    --radius-full: 9999px;
+
+    /* ---- Transitions ---- */
+    --ease-smooth:    cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-bounce:    cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-cinematic: cubic-bezier(0.77, 0, 0.175, 1);
+    --duration-fast:   200ms;
+    --duration-normal: 300ms;
+    --duration-slow:   500ms;
+    --duration-slower:  700ms;
+
+    /* ---- Shadows ---- */
+    --shadow-sm:   0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md:   0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg:   0 20px 25px -5px rgba(107, 142, 123, 0.1), 0 10px 10px -5px rgba(107, 142, 123, 0.04);
+    --shadow-xl:   0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    --shadow-glow: 0 0 30px rgba(255, 255, 255, 0.3);
+
+    /* ---- Custom Cursor ---- */
+    --cursor-size:       20px;
+    --cursor-size-hover: 40px;
+}

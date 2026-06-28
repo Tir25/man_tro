@@ -1,0 +1,353 @@
+/* ============================================
+   COMPONENTS — Cards, glass, buttons, forms, modal
+   ============================================ */
+
+/* ---- Glassmorphism Card ---- */
+.glass-card {
+    background: var(--color-cream-85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-white-50);
+    box-shadow: var(--shadow-xl);
+}
+
+/* ---- Landing Page ---- */
+.perspective-container {
+    perspective: 2000px;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh; /* Modern mobile fix */
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--z-landing);
+}
+
+.page-cover {
+    transform-origin: left center;
+    transition: transform 1.5s var(--ease-cinematic),
+                opacity 1.2s ease-in-out,
+                filter 0.8s ease-in-out;
+    transition-delay: 0s, 0.3s, 0.2s;
+    will-change: transform, opacity, filter;
+}
+
+.page-cover.flipped {
+    transform: rotateY(-110deg) scale(0.9);
+    opacity: 0;
+    filter: blur(4px);
+    pointer-events: none;
+}
+
+/* ---- Enter Button ---- */
+.enter-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all var(--duration-normal) var(--ease-smooth);
+}
+
+.enter-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Button glow pulse */
+.enter-btn::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    background: transparent;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+    animation: glow-pulse 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Button shimmer sweep */
+.enter-btn .shimmer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--color-sage-30),
+        transparent
+    );
+    transform: translateX(-100%);
+    transition: transform var(--duration-slower) ease-in-out;
+    pointer-events: none;
+}
+
+.enter-btn:hover .shimmer {
+    transform: translateX(100%);
+}
+
+/* ---- Menu Card ---- */
+.menu-card {
+    transition: transform var(--duration-slow) var(--ease-smooth),
+                box-shadow var(--duration-slow) var(--ease-smooth);
+    will-change: transform;
+}
+
+.menu-card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.menu-card .menu-image-container img {
+    transition: transform var(--duration-slower) var(--ease-smooth);
+}
+
+.menu-card:hover .menu-image-container img {
+    transform: scale(1.05);
+}
+
+/* Image fallback background */
+.menu-image-container {
+    background-color: var(--color-cream-dark);
+}
+
+/* ---- Gallery Grid ---- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 250px;
+    gap: var(--space-md);
+}
+
+.gallery-grid .gallery-item:nth-child(1) {
+    grid-row: span 2;
+}
+
+.gallery-grid .gallery-item:nth-child(4) {
+    grid-column: span 2;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--duration-slower) var(--ease-smooth);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+.gallery-item .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--color-black-50), transparent 60%);
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease-smooth);
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-lg);
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-overlay span {
+    color: var(--color-white);
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* ---- Testimonial Card ---- */
+.testimonial-card {
+    position: relative;
+    padding: var(--space-2xl);
+}
+
+.testimonial-card .quote-mark {
+    position: absolute;
+    top: var(--space-md);
+    left: var(--space-lg);
+    font-size: 4rem;
+    line-height: 1;
+    font-family: var(--font-serif);
+    color: var(--color-sage-20);
+    pointer-events: none;
+    user-select: none;
+}
+
+/* ---- Order Form Inputs ---- */
+.order-input {
+    transition: border-color var(--duration-fast) var(--ease-smooth),
+                box-shadow var(--duration-fast) var(--ease-smooth);
+}
+
+.order-input:focus {
+    outline: none;
+    border-color: var(--color-sage);
+    box-shadow: 0 0 0 3px var(--color-sage-20);
+}
+
+.order-input:invalid:not(:placeholder-shown) {
+    border-color: #e57373;
+}
+
+/* ---- Success Modal ---- */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: var(--color-black-30);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--duration-normal) var(--ease-smooth);
+}
+
+.modal-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: var(--color-white);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-3xl);
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    transform: scale(0.9) translateY(20px);
+    transition: transform var(--duration-slow) var(--ease-bounce);
+    box-shadow: var(--shadow-xl);
+}
+
+.modal-backdrop.active .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+/* Modal auto-dismiss progress ring */
+.modal-progress-ring {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto var(--space-lg);
+}
+
+.modal-progress-ring circle {
+    fill: none;
+    stroke-width: 3;
+    stroke-linecap: round;
+}
+
+.modal-progress-ring .ring-bg {
+    stroke: var(--color-cream-dark);
+}
+
+.modal-progress-ring .ring-fg {
+    stroke: var(--color-sage);
+    stroke-dasharray: 126; /* 2 * PI * 20 ≈ 126 */
+    stroke-dashoffset: 126;
+    transform: rotate(-90deg);
+    transform-origin: center;
+}
+
+.modal-backdrop.active .ring-fg {
+    animation: modal-countdown 5s linear forwards;
+}
+
+/* ---- Custom Cursor ---- */
+.custom-cursor {
+    position: fixed;
+    width: var(--cursor-size);
+    height: var(--cursor-size);
+    border: 2px solid var(--color-sage);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: var(--z-cursor);
+    transform: translate(-50%, -50%);
+    transition: width var(--duration-fast) var(--ease-smooth),
+                height var(--duration-fast) var(--ease-smooth),
+                border-color var(--duration-fast) var(--ease-smooth),
+                background-color var(--duration-fast) var(--ease-smooth);
+    mix-blend-mode: difference;
+    opacity: 0; /* hidden until JS shows it */
+}
+
+.custom-cursor.hovering {
+    width: var(--cursor-size-hover);
+    height: var(--cursor-size-hover);
+    background-color: var(--color-sage-20);
+    border-color: var(--color-sage-light);
+}
+
+/* Hide default cursor on desktop when custom cursor is active */
+.has-custom-cursor,
+.has-custom-cursor * {
+    cursor: none !important;
+}
+
+/* ---- Vine Wrap Animation ---- */
+.vine-border {
+    position: relative;
+    overflow: visible;
+}
+
+.vine-border svg.vine-path {
+    position: absolute;
+    inset: -8px;
+    width: calc(100% + 16px);
+    height: calc(100% + 16px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.vine-border svg.vine-path path {
+    fill: none;
+    stroke: var(--color-sage-light);
+    stroke-width: 1.5;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: vine-grow 4s ease-in-out forwards;
+    animation-delay: 2s;
+}
+
+/* ---- Audio Toggle ---- */
+.audio-toggle {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--color-sage-30);
+    background: var(--color-sage-10);
+    color: var(--color-sage);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--duration-fast) var(--ease-smooth);
+}
+
+.audio-toggle:hover {
+    background: var(--color-sage);
+    color: var(--color-white);
+}
+
+.audio-toggle .mute-line {
+    position: absolute;
+    width: 70%;
+    height: 2px;
+    background: currentColor;
+    transform: rotate(-45deg);
+    transition: opacity var(--duration-fast);
+}
+
+.audio-toggle.playing .mute-line {
+    opacity: 0;
+}
