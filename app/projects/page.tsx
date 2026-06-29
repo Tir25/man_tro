@@ -29,12 +29,19 @@ function FeaturedProject({ project }: { project: Project }) {
       <div className="relative aspect-[4/5] sm:aspect-[16/9] md:aspect-[21/9] overflow-hidden">
         {project.video ? (
           <video
+            ref={(el) => {
+              if (el) {
+                el.defaultMuted = true;
+                el.muted = true;
+              }
+            }}
             src={project.video}
             poster={project.image.src}
             muted
             loop
             playsInline
             autoPlay
+            preload="auto"
             className="absolute inset-0 h-full w-full object-cover"
           />
         ) : (
@@ -144,12 +151,19 @@ function ProjectGridCard({ project, index }: { project: Project; index: number }
       <div className="relative aspect-[16/10] sm:aspect-video overflow-hidden">
         {project.video ? (
           <video
+            ref={(el) => {
+              if (el) {
+                el.defaultMuted = true;
+                el.muted = true;
+              }
+            }}
             src={project.video}
             poster={project.image.src}
             muted
             loop
             playsInline
             autoPlay
+            preload="auto"
             className="absolute inset-0 h-full w-full object-cover"
           />
         ) : (
