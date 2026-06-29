@@ -24,6 +24,26 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'aura-clothing',
+    title: 'AURA',
+    description: 'Luxury e-commerce clothing storefront showcasing premium animations, high-fidelity UI layouts, and a seamless shopping pipeline.',
+    category: 'E-commerce Website',
+    image: {
+      src: '/work-aura.png',
+      alt: 'AURA Premium Clothing Store landing page',
+    },
+    video: '/aura-demo.mp4',
+    url: 'https://meek-rolypoly-733ed2.netlify.app/',
+    dominantColor: '#a855f7',
+    technologies: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion'],
+    stats: [
+      { label: 'Conversion', value: '+24%' },
+      { label: 'Load Time', value: '0.8s' },
+    ],
+    size: 'large',
+    featured: true,
+  },
+  {
     id: 'whispering-vine',
     title: 'The Whispering Vine',
     description: 'Botanical cafe website featuring immersive visual layouts, fluid scroll animation layers, and custom menu navigation details.',

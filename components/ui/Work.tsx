@@ -13,13 +13,22 @@ import type { WorkProject } from '@/src/types'
 const projects: WorkProject[] = [
     {
         id: 1,
-        title: 'The Whispering Vine',
-        category: 'Botanical Cafe Website',
-        image: '/work-whispering-vine.png',
-        url: 'https://lovely-phoenix-4646df.netlify.app/',
+        title: 'AURA',
+        category: 'Premium E-Commerce Clothing Store',
+        image: '/work-aura.png',
+        video: '/aura-demo.mp4',
+        url: 'https://meek-rolypoly-733ed2.netlify.app/',
     },
     {
         id: 2,
+        title: 'The Whispering Vine',
+        category: 'Botanical Cafe Website',
+        image: '/work-whispering-vine.png',
+        video: '/whispering-vine-demo.mp4',
+        url: 'https://lovely-phoenix-4646df.netlify.app/',
+    },
+    {
+        id: 3,
         title: 'VR NextGEN Solutions',
         category: 'Consultancy Firm Website',
         image: '/work-vr-nextgen.png',
@@ -27,10 +36,11 @@ const projects: WorkProject[] = [
         url: 'https://vrnextgensolutions.com/',
     },
     {
-        id: 3,
+        id: 4,
         title: 'UniTrack',
         category: 'Real-time Transit Tracking PWA',
         image: '/work-bus-tracker.png',
+        video: '/unitrack-demo.mp4',
         url: 'https://university-bus-tracker-app.web.app/',
     },
 ]
