@@ -76,12 +76,19 @@ export function ProjectCard({ project, onHover, delay = 0 }: ProjectCardProps) {
           <div className="relative h-64 overflow-hidden">
             {project.video ? (
               <video
+                ref={(el) => {
+                  if (el) {
+                    el.defaultMuted = true;
+                    el.muted = true;
+                  }
+                }}
                 src={project.video}
                 poster={project.image.src}
                 muted
                 loop
                 playsInline
                 autoPlay
+                preload="auto"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 will-change-transform"
               />
             ) : (

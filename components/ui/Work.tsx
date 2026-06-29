@@ -103,12 +103,19 @@ export function Work() {
                                 <div className="w-full h-full overflow-hidden relative">
                                     {project.video ? (
                                         <video
+                                            ref={(el) => {
+                                                if (el) {
+                                                    el.defaultMuted = true;
+                                                    el.muted = true;
+                                                }
+                                            }}
                                             src={project.video}
                                             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                                             autoPlay
                                             loop
                                             muted
                                             playsInline
+                                            preload="auto"
                                         />
                                     ) : (
                                         <Image
