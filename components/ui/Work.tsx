@@ -17,7 +17,7 @@ const projects: WorkProject[] = [
         category: 'Premium E-Commerce Clothing Store',
         image: '/work-aura.png',
         video: '/aura-demo.mp4',
-        url: 'https://meek-rolypoly-733ed2.netlify.app/',
+        url: 'https://6a43d648dfaf361b06ab60d3--aura-e-commerce27.netlify.app/',
     },
     {
         id: 2,

@@ -33,7 +33,7 @@ export const projects: Project[] = [
       alt: 'AURA Premium Clothing Store landing page',
     },
     video: '/aura-demo.mp4',
-    url: 'https://meek-rolypoly-733ed2.netlify.app/',
+    url: 'https://6a43d648dfaf361b06ab60d3--aura-e-commerce27.netlify.app/',
     dominantColor: '#a855f7',
     technologies: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion'],
     stats: [
